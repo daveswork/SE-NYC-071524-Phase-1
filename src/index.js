@@ -53,11 +53,33 @@ const foods = [
 
 const restaurantMenu = document.getElementById('restaurant-menu')
 
-foods.forEach(food => {
-    const foodImage = document.createElement('img')
-    foodImage.src = food.image
-    restaurantMenu.appendChild(foodImage)
-})
+// foods.forEach(food => {
+//     const foodImage = document.createElement('img')
+//     foodImage.src = food.image
+//     restaurantMenu.appendChild(foodImage)
+
+//     // Event listener takes the name of the event and the callback function
+//     // foodImage.addEventListener('click', () => {
+//     //     // console.log('Yay! You clicked me!');
+//     //     // console.log(food);
+//     //     const foodDetailImage = document.querySelector('.detail-image');
+//     //     foodDetailImage.src = food.image
+        
+//     //     const foodName = document.querySelector('.name');
+//     //     foodName.textContent = food.name
+
+
+//     //     const foodDescriptionDisplay = document.getElementById('description-display');
+//     //     foodDescriptionDisplay.textContent = food.description
+
+//     // });
+//     foodImage.addEventListener('click', () => {
+//         displayFoodDetails(food)
+//     } )
+// })
+
+foods.forEach(addFoodImageToRestaurantMenu)
+
 
 const foodDetailImage = document.querySelector('.detail-image')
 foodDetailImage.src = foods[0].image
@@ -67,3 +89,64 @@ foodName.textContent = foods[0].name
 
 const foodDescriptionDisplay = document.querySelector('#description-display')
 foodDescriptionDisplay.textContent = foods[0].description
+
+
+// displayFoodDetails(foods[2])
+
+function displayFoodDetails(food){
+    console.log(food);
+
+    const foodDetailImage = document.querySelector('.detail-image');
+    foodDetailImage.src = food.image;
+    // const foodDetailImage = document.querySelector('.detail-image');
+    // foodDetailImage.src = food.image
+    
+    const foodName = document.querySelector('.name');
+    foodName.textContent = food.name
+
+
+    const foodDescriptionDisplay = document.getElementById('description-display');
+    foodDescriptionDisplay.textContent = food.description
+    
+}
+
+
+
+function addFoodImageToRestaurantMenu(food){
+    const foodImage = document.createElement('img')
+    foodImage.src = food.image
+    restaurantMenu.appendChild(foodImage)   
+
+    // Deliverable #1 solution
+    foodImage.addEventListener('click', () => {
+        displayFoodDetails(food)
+    } )
+}
+
+
+// Deliverable #2 solution
+const newFoodItem = document.getElementById("new-food")
+console.log(newFoodItem)
+newFoodItem.addEventListener('submit', (event) => {
+    event.preventDefault();
+    // console.log(event)
+    const newNameInputElement = document.getElementById('new-name');
+    const newImageElement = document.getElementById('new-image');
+    const newDescriptionTextAreaElement = document.getElementById('new-description');
+
+    const newFood = {
+        name: newNameInputElement.value,
+        image: newImageElement.value,
+        description: newDescriptionTextAreaElement.value
+        // description:
+    }
+
+    console.log(newFood)
+    addFoodImageToRestaurantMenu(newFood);
+
+})
+
+
+
+
+
