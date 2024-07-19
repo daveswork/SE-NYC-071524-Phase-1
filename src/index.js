@@ -144,5 +144,49 @@ for(let index = 0; index < burgers.length; index++){
 
 }
 
+// Deliverable # 1 solution
+const restaurantMenu = document.getElementById('restaurant-menu');
 
+for(let index = 0; index < burgers.length; index++){
+    const imgElement = document.createElement('img');
+    imgElement.className = 'burger';
+    imgElement.src = burgers[index].image;
+    restaurantMenu.appendChild(imgElement); 
+}
+
+// Deliverable # 2 solution
+otherFoods.forEach(food => {
+    const imgElement = document.createElement('img');
+    imgElement.src = food.image;
+    restaurantMenu.appendChild(imgElement);
+})
+
+// Deliverable # 3 solution
+const detailImageElement = document.querySelector('.detail-image');
+detailImageElement.src = burgers[0].image;
+
+// Deliverable # 4 solution
+const nameElement = document.querySelector('.name');
+nameElement.textContent = burgers[0].name;
+
+// Deliverable # 5 solution
+const descriptionDisplayElement = document.getElementById('description-display');
+descriptionDisplayElement.textContent = burgers[0].description;
+
+// Deliverable # 6 solution
+// Node list
+const menuImages = document.querySelectorAll('#restaurant-menu img');
+
+for(const menuImage of menuImages){
+    menuImage.style = "border-style: solid; border-color: red; border-width: 3px";
+}
+
+// Deliverable # 7 solution
+// HTML collection: Cannot use 'for .. each' 
+// but we can use 'for .. of'
+const burgerImages = document.getElementsByClassName('burger');
+
+for(const burgerImage of burgerImages){
+    burgerImage.style.borderColor = "blue";
+}
 
