@@ -133,4 +133,16 @@ for(const element of flatburgerTextElements){
 
 
 //  Deliverable #1 solution
+for(let index = 0; index < burgers.length; index++){
+    const imgElement = document.createElement('img');
+    imgElement.className = "burger";
+    console.log(imgElement);
+    // console.log(burgers[index].image);
+    imgElement.src = burgers[index].image;
+    restaurantMenu.appendChild(imgElement);
+
+
+}
+
+
 
