@@ -45,7 +45,9 @@ function displayFoodDetails(food){
 fetch("https://api.coincap.io/v2/assets")
 .then(response => {
     if(response.ok){
-        alert("GET request was successful!")
+        response.json().then(apiDataObject => {
+            console.log(apiDataObject.data)
+        })
     }
     else{
         "Error: Unable to retrieve cryptocurrency data!"
