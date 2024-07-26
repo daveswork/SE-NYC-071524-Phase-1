@@ -49,12 +49,16 @@ fetch("https://api.coincap.io/v2/assets")
 .then(response => {
     if(response.ok){
         response.json().then(apiDataObject => {
-            apiDataObject.data.forEach(cryptoCurrency => {
-                //console.log(cryptoCurrency)
-                const liElement = document.createElement('li')
-                liElement.textContent = `${cryptoCurrency.name} (${cryptoCurrency.symbol}) : Rank # ${cryptoCurrency.rank}`
-                cryptoCurrencyListElement.appendChild(liElement)
+            // apiDataObject.data.forEach(cryptoCurrency => {
+            //     //console.log(cryptoCurrency)
+            //     const liElement = document.createElement('li')
+            //     liElement.textContent = `${cryptoCurrency.name} (${cryptoCurrency.symbol}) : Rank # ${cryptoCurrency.rank}`
+            //     cryptoCurrencyListElement.appendChild(liElement)
+            // })
+            const topTenCryptoCurrencies = apiDataObject.data.filter(cryptocurrency => {
+                return Number(cryptocurrency.rank) <= 10
             })
+            console.log(topTenCryptoCurrencies)
         })
     }
     else{
