@@ -38,3 +38,16 @@ function displayFoodDetails(food){
     const foodDescriptionDisplayElement = document.getElementById('description-display')
     foodDescriptionDisplayElement.textContent = food.description
 }
+
+
+// Example code 
+
+fetch("https://api.coincap.io/v2/assets")
+.then(response => {
+    if(response.ok){
+        alert("GET request was successful!")
+    }
+    else{
+        "Error: Unable to retrieve cryptocurrency data!"
+    }
+})
