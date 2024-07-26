@@ -40,6 +40,9 @@ function displayFoodDetails(food){
 }
 
 
+const cryptoCurrencyListElement = document.getElementById('cryptocurrency-list')
+// console.log(cryptoCurrencyList)
+
 // Example code 
 
 fetch("https://api.coincap.io/v2/assets")
@@ -47,7 +50,10 @@ fetch("https://api.coincap.io/v2/assets")
     if(response.ok){
         response.json().then(apiDataObject => {
             apiDataObject.data.forEach(cryptoCurrency => {
-                console.log(cryptoCurrency)
+                //console.log(cryptoCurrency)
+                const liElement = document.createElement('li')
+                liElement.textContent = `${cryptoCurrency.name} (${cryptoCurrency.symbol}) : Rank # ${cryptoCurrency.rank}`
+                cryptoCurrencyListElement.appendChild(liElement)
             })
         })
     }
