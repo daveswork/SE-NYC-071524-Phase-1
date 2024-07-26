@@ -58,10 +58,17 @@ fetch("https://api.coincap.io/v2/assets")
             const topTenCryptoCurrencies = apiDataObject.data.filter(cryptocurrency => {
                 return Number(cryptocurrency.rank) <= 10
             })
-            console.log(topTenCryptoCurrencies)
+            // console.log(topTenCryptoCurrencies)
+            topTenCryptoCurrencies.forEach(addCryptoCurrencyToList)
         })
     }
     else{
         "Error: Unable to retrieve cryptocurrency data!"
     }
 })
+
+function addCryptoCurrencyToList(cryptoCurrency){
+            const liElement = document.createElement('li')
+            liElement.textContent = `${cryptoCurrency.name} (${cryptoCurrency.symbol}) : Rank # ${cryptoCurrency.rank}`
+            cryptoCurrencyListElement.appendChild(liElement)
+}
