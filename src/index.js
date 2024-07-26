@@ -46,7 +46,9 @@ fetch("https://api.coincap.io/v2/assets")
 .then(response => {
     if(response.ok){
         response.json().then(apiDataObject => {
-            console.log(apiDataObject.data)
+            apiDataObject.data.forEach(cryptoCurrency => {
+                console.log(cryptoCurrency)
+            })
         })
     }
     else{
