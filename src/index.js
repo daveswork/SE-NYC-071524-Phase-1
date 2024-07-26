@@ -55,10 +55,12 @@ fetch("https://api.coincap.io/v2/assets")
             //     liElement.textContent = `${cryptoCurrency.name} (${cryptoCurrency.symbol}) : Rank # ${cryptoCurrency.rank}`
             //     cryptoCurrencyListElement.appendChild(liElement)
             // })
+            // Get the top ten cryptocurrencies and store them into a variable (array)
             const topTenCryptoCurrencies = apiDataObject.data.filter(cryptocurrency => {
                 return Number(cryptocurrency.rank) <= 10
             })
             // console.log(topTenCryptoCurrencies)
+            // Iterate through our filtered data and display the top ten cryptocurrencies.
             topTenCryptoCurrencies.forEach(addCryptoCurrencyToList)
         })
     }
